@@ -37,14 +37,15 @@ public class SmartHouse {
 			regstUsr.isPrtAlcoba2();
 			blind = RegistroFrame.chckbxPersiana.isSelected();
 			regstUsr.isPersiana();
-			
+			//La idea de tener cada CheckBox como atributo es que antes de cargar la interfaz de control
+			//se verificarán las restricciones y los botones de esas funciones restringidas se bloquearán
 			if ("".equals(name) || "".equals(userName) || "".equals(password) || "".equals(relationship)){
                 throw new IllegalArgumentException("Aún faltan datos por completar");
             }else if (isNumeric(name) || isNumeric(relationship)){
                 throw new IllegalArgumentException("El formato del nombre es incorrecto");
             }else{
             	JOptionPane.showMessageDialog(null, "Registro Exitoso");
-            	/* cuando funcione esto, quitarlo
+            	/*//Aqui guardo los objetos tipo usuario pero esto se mirará luego
                 if (usuarios.containsKey(userName)){
                     JOptionPane.showMessageDialog(null, "El nombre de usuario ya existe, ingrese uno distinto");
                 }else{
@@ -60,7 +61,7 @@ public class SmartHouse {
 		}
 	}
 	
-	private boolean isNumeric(String nombre) {  //Determina si existe algun numero en el nombre  
+	private boolean isNumeric(String nombre) {  //Determina si existe algun numero en el nombre o parentesco
     	String numeros = "1234567890";			//de haberlo este formato sería incorrecto
     	for(int i = 0; i < nombre.length(); i++){
     	      if (numeros.indexOf(nombre.charAt(i), 0)!= -1){

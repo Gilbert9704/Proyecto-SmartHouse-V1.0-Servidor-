@@ -88,11 +88,12 @@ public class RegistroFrame extends JFrame {
 		lblDeclareLaRestricciones.setBounds(65, 277, 368, 14);
 		getContentPane().add(lblDeclareLaRestricciones);
 		
+		//Estos CheckBox va a ser quienes declaren las restricciones para cada usuario
 		JCheckBox chckbxAlcoba_1 = new JCheckBox("Puerta Alcoba 1");
 		chckbxAlcoba_1.setBounds(65, 305, 121, 23);
 		getContentPane().add(chckbxAlcoba_1);
 		
-		JCheckBox chckbxAlcoba_2 = new JCheckBox("Puerta Alcoba 2");
+		JCheckBox chckbxAlcoba_2 = new JCheckBox("Puerta Alcoba 2");	
 		chckbxAlcoba_2.setBounds(203, 305, 121, 23);
 		getContentPane().add(chckbxAlcoba_2);
 		

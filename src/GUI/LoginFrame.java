@@ -12,7 +12,7 @@ public class LoginFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JTextField tfUsuario;
 	private JPasswordField pfContrasena;
-	
+	//Constructor de la interfaz de Usuario del Login
 	public LoginFrame() {
 		getContentPane().setLayout(null);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("casa.png"));
@@ -79,7 +79,7 @@ public class LoginFrame extends JFrame {
 	}
 	
 	public void accederPerfil(){
-		
+		//Esto falta completarlo pero se hará una vez ya hayamos completado las interfaces.
 		String usuario = tfUsuario.getText();
 		String pass = new String(pfContrasena.getPassword());
 		
