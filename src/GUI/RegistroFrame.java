@@ -15,6 +15,7 @@ import java.awt.event.ActionEvent;
 
 import Datos.SmartHouse;
 
+
 public class RegistroFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -25,6 +26,11 @@ public class RegistroFrame extends JFrame {
 	public static JCheckBox chckbxAlcoba_1;
 	public static JCheckBox chckbxAlcoba_2;
 	public static JCheckBox chckbxPersiana;
+	
+	//===================================
+	public boolean estadoAlcoba1;
+	public boolean estadoAlcoba2;
+	public boolean estadoPersiana;
 	
 	SmartHouse smhs;
 	
@@ -113,7 +119,23 @@ public class RegistroFrame extends JFrame {
 		JButton btnRegistrar = new JButton("Registrar");
 		btnRegistrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				smhs.registrarUsuario();
+				
+				if (chckbxAlcoba_1.isSelected() == true){
+					estadoAlcoba1 = true;
+				}else{
+					estadoAlcoba1 = false;
+				}
+				if (chckbxAlcoba_2.isSelected() == true){
+					estadoAlcoba2 = true;
+				}else{
+					estadoAlcoba2 = false;
+				}
+				if (chckbxPersiana.isSelected() == true){
+					estadoPersiana = true;
+				}else{
+					estadoPersiana = false;
+				}
+				smhs.registrarUsuario(estadoAlcoba1, estadoAlcoba2, estadoPersiana);
 			}
 		});
 		btnRegistrar.setBounds(336, 383, 89, 23);

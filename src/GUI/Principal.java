@@ -23,5 +23,4 @@ public class Principal {
 		ctlFr.setVisible(true);
 		*/
 	}
-
 }

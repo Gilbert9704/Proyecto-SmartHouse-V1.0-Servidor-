@@ -1,6 +1,5 @@
 package GUI;
 
-
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -12,6 +11,8 @@ public class LoginFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JTextField tfUsuario;
 	private JPasswordField pfContrasena;
+	
+	ControlFrame cf = new ControlFrame();
 	//Constructor de la interfaz de Usuario del Login
 	public LoginFrame() {
 		getContentPane().setLayout(null);
@@ -48,7 +49,8 @@ public class LoginFrame extends JFrame {
 		JButton btnAcceder = new JButton("Acceder");
 		btnAcceder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				accederPerfil();
+				cf.control();
+				//accederPerfil();
 			}
 		});
 		btnAcceder.setBounds(200, 179, 89, 23);

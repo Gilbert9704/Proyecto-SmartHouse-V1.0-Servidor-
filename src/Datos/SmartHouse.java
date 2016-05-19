@@ -20,9 +20,10 @@ public class SmartHouse {
 	
 	Usuario regstUsr = new Usuario(name, userName, password, relationship, doorA, doorB, blind);
 	ArchivoUsr archUsr = new ArchivoUsr();
-	
-	public void registrarUsuario(){
+	//
+	public void registrarUsuario(boolean a, boolean b, boolean c){
 		try{
+			
 			name = RegistroFrame.txfdNombre.getText();
 			regstUsr.setNombre(name);
 			userName = RegistroFrame.txfdNombreUsr.getText();
@@ -31,12 +32,20 @@ public class SmartHouse {
 			regstUsr.setContrasena(password);
 			relationship = RegistroFrame.txfdParentesco.getText();
 			regstUsr.setParentesco(relationship);
+			doorA = a;
+			regstUsr.setPrtAlcoba1(doorA);
+			doorB = b;
+			regstUsr.setPrtAlcoba2(doorB);
+			blind = c;
+			regstUsr.setPersiana(blind);
+			/*
 			doorA = RegistroFrame.chckbxAlcoba_1.isSelected();
-			regstUsr.isPrtAlcoba1();
+			regstUsr.setPrtAlcoba1(doorA);
 			doorB = RegistroFrame.chckbxAlcoba_2.isSelected();
-			regstUsr.isPrtAlcoba2();
+			regstUsr.setPrtAlcoba2(doorB);
 			blind = RegistroFrame.chckbxPersiana.isSelected();
-			regstUsr.isPersiana();
+			regstUsr.setPersiana(blind);
+			*/
 			//La idea de tener cada CheckBox como atributo es que antes de cargar la interfaz de control
 			//se verificarán las restricciones y los botones de esas funciones restringidas se bloquearán
 			if ("".equals(name) || "".equals(userName) || "".equals(password) || "".equals(relationship)){
