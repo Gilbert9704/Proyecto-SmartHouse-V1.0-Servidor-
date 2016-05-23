@@ -19,8 +19,9 @@ public class ControlFrame{
 		ctrlFrame.setLayout(new BorderLayout());
 		
 		//Panel en donde se puede visualizar la maqueta
-		PanelMaqueta maqueta = new PanelMaqueta();
-		ctrlFrame.add(maqueta, BorderLayout.NORTH);
+		//ImageIcon icon = new ImageIcon(ctrlFrame.getClass().getResource(""));
+		//PanelMaqueta maqueta = new PanelMaqueta(icon.getImage());
+		//ctrlFrame.add(maqueta, BorderLayout.NORTH);
 		//Fin Panel maqueta
 		
 		//Panel boton en donde se encuentran los botones con las funciones

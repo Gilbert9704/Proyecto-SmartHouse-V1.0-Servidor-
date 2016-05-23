@@ -16,7 +16,7 @@ public class LoginFrame extends JFrame {
 	//Constructor de la interfaz de Usuario del Login
 	public LoginFrame() {
 		getContentPane().setLayout(null);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("casa.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("res/casa.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 480, 340);
 		
@@ -49,7 +49,9 @@ public class LoginFrame extends JFrame {
 		JButton btnAcceder = new JButton("Acceder");
 		btnAcceder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				cf.control();
+				//cf.control(); <--- imagen diseno.jpg
+				ControlFrameA cf = new ControlFrameA();
+				cf.setVisible(true);
 				//accederPerfil();
 			}
 		});

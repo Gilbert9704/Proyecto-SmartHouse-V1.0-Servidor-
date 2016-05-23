@@ -16,7 +16,7 @@ import java.awt.event.ActionEvent;
 import Datos.SmartHouse;
 
 
-public class RegistroFrame extends JFrame {
+public class RegistroFrame extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	public static JTextField txfdNombre;
@@ -38,7 +38,7 @@ public class RegistroFrame extends JFrame {
 		smhs = new SmartHouse();
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("cuaderno.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("res/cuaderno.png"));
 		setTitle("SmartHouse v1.0 Registo");
 		setBounds(100, 100, 520, 470);
 		setResizable(false);
