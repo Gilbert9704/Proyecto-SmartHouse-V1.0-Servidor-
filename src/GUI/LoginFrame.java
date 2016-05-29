@@ -12,7 +12,6 @@ public class LoginFrame extends JFrame {
 	private JTextField tfUsuario;
 	private JPasswordField pfContrasena;
 	
-	ControlFrame cf = new ControlFrame();
 	//Constructor de la interfaz de Usuario del Login
 	public LoginFrame() {
 		getContentPane().setLayout(null);
@@ -50,7 +49,7 @@ public class LoginFrame extends JFrame {
 		btnAcceder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//cf.control(); <--- imagen diseno.jpg
-				ControlFrameA cf = new ControlFrameA();
+				ControlFrame cf = new ControlFrame();
 				cf.setVisible(true);
 				//accederPerfil();
 			}
