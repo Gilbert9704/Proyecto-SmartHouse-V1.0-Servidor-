@@ -1,4 +1,4 @@
-package panels;
+package panelsSoloemergencia;
 
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;

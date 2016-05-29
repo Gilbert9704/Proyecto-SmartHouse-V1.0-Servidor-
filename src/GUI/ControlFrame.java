@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.*;
 
-import panels.*;
+import panelsSoloemergencia.*;
 
 public class ControlFrame{
 

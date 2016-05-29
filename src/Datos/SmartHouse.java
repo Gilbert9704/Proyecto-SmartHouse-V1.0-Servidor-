@@ -20,7 +20,7 @@ public class SmartHouse {
 	
 	Usuario regstUsr = new Usuario(name, userName, password, relationship, doorA, doorB, blind);
 	ArchivoUsr archUsr = new ArchivoUsr();
-	//
+	
 	public void registrarUsuario(boolean a, boolean b, boolean c){
 		try{
 			

@@ -1,4 +1,4 @@
-package panels;
+package panelsSoloemergencia;
 
 //import java.awt.BorderLayout;
 import javax.swing.JPanel;
