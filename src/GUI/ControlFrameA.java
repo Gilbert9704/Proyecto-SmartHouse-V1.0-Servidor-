@@ -68,13 +68,12 @@ public class ControlFrameA extends JFrame{
 	JLabel lblIluminacinCocina = new JLabel("- Iluminaci\u00F3n Cocina: ");
 	JLabel lblIluminacinSalacomedor = new JLabel("- Iluminaci\u00F3n Sala-Comedor: ");
 	
-	
 	Puerta puerta = new Puerta();
 	Iluminacion iluminacion = new Iluminacion();
 	
 	public ControlFrameA() {
 		//======================
-		//<--Aqui iria el codigo que carga los usuarios-->
+		cargarUsuario();
 		//======================
 		this.getContentPane().setLayout(null);
 		this.setTitle("SmartHouse v1.0 Panel de Control");
@@ -404,5 +403,9 @@ public class ControlFrameA extends JFrame{
 		lblPersianaSalacomedor.setBounds(433, 557, 234, 14);
 		getContentPane().add(lblPersianaSalacomedor);
 	}
-
+	
+	//Metodo para cargar los usuarios registrados en el sistema
+	public void cargarUsuario(){
+		
+	}
 }
