@@ -1,5 +1,6 @@
 package Datos;
 
+import java.io.IOException;
 import java.util.*;
 import javax.swing.JOptionPane;
 
@@ -26,7 +27,13 @@ public class SmartHouse {
 	Usuario regstUsr = new Usuario(name, userName, password, relationship, doorA, doorB, blind);
 	ArchivoUsr archUsr = new ArchivoUsr();
 	
-	public void registrarUsuario(boolean a, boolean b, boolean c){
+	public SmartHouse(HashMap <String, Usuario> u){
+		usuarios = u;
+	}
+	
+	public SmartHouse(){}
+	
+	public void registrarUsuario(boolean a, boolean b, boolean c) throws IOException{
 		try{	
 			name = RegistroFrame.txfdNombre.getText();
 			regstUsr.setNombre(name);
@@ -67,18 +74,16 @@ public class SmartHouse {
             }else if (isNumeric(name) || isNumeric(relationship)){
                 throw new IllegalArgumentException("El formato del nombre es incorrecto");
             }else{
-            	JOptionPane.showMessageDialog(null, "Registro Exitoso");
-            	JOptionPane.showMessageDialog(null, toString(),"Información", JOptionPane.PLAIN_MESSAGE);
-            	/*//Aqui guardo los objetos tipo usuario pero esto se mirará luego
+
                 if (usuarios.containsKey(userName)){
                     JOptionPane.showMessageDialog(null, "El nombre de usuario ya existe, ingrese uno distinto");
                 }else{
                     usuarios.put(userName, new Usuario(name, userName, password, relationship, doorA, doorB, blind));
                     JOptionPane.showMessageDialog(null, "¡¡Registro Exitoso!!");
-                    //mostrarDatos();
-                    //arch.almacenarDatosUsr(usuarios);
+                    JOptionPane.showMessageDialog(null, toString(),"Información", JOptionPane.PLAIN_MESSAGE);
+                    archUsr.almacenarDatosUsr(usuarios);                
                 }
-                */
+                
             }
 		}catch(IllegalArgumentException iae){
 			JOptionPane.showMessageDialog(null, iae.getMessage());

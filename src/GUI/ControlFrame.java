@@ -71,20 +71,30 @@ public class ControlFrame extends JFrame{
 	Puerta puerta = new Puerta();
 	Iluminacion iluminacion = new Iluminacion();
 	
-	public ControlFrame() {
-		//======================
-		cargarUsuario();
-		//======================
+	public ControlFrame(String name, boolean alcoba1, boolean alcoba2, boolean persianap) {
+		//En esta fraccion de codigo se evaluan los datos para posteriormente generar la interfaz de control
+		if (alcoba1 == false){
+			btnPAlcoba_1.setEnabled(false);
+			btnLuzAlcoba_1.setEnabled(false);
+		}
+		if (alcoba2 == false){
+			btnPAlcoba_2.setEnabled(false);
+			btnLuzAlcoba_2.setEnabled(false);
+		}
+		if (persianap == false){
+			btnPersiana.setEnabled(false);
+		}  
+		//<---------------------------------------------->
+		
 		this.getContentPane().setLayout(null);
 		this.setTitle("SmartHouse v1.0 Panel de Control");
 		this.setResizable(false);
-		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setBounds(100, 100, 715, 660);
 		
-		JLabel lblNewLabel = new JLabel("\u00A1Bienvenido");
+		JLabel lblNewLabel = new JLabel("\u00A1Bienvenido " + name + "!");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel.setBounds(180, 11, 234, 14);
+		lblNewLabel.setBounds(180, 11, 351, 14);
 		getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_2 = new JLabel("<html><body>A continuación podrás controlar funciones de la casa como encender luces o abrir puertas<br>para ello, si deseas encender luces de un lugar en especifico deberás dar click en los botones con imagenes<br>de lo contrario si quieres abrir puertas  existen unos botones indicando cuales controlan</body></html>");
@@ -402,10 +412,5 @@ public class ControlFrame extends JFrame{
 		
 		lblPersianaSalacomedor.setBounds(433, 557, 234, 14);
 		getContentPane().add(lblPersianaSalacomedor);
-	}
-	
-	//Metodo para cargar los usuarios registrados en el sistema
-	public void cargarUsuario(){
-		
 	}
 }

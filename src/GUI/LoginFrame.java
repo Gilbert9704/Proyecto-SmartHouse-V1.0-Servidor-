@@ -4,13 +4,22 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+
 import javax.swing.*;
+
+import DAO.ArchivoUsr;
+import Datos.SmartHouse;
+import Datos.Usuario;
 
 public class LoginFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField tfUsuario;
 	private JPasswordField pfContrasena;
+	
+	SmartHouse smtHouse = new SmartHouse();
+	ArchivoUsr archvUsr = new ArchivoUsr();
 	
 	//Constructor de la interfaz de Usuario del Login
 	public LoginFrame() {
@@ -48,10 +57,7 @@ public class LoginFrame extends JFrame {
 		JButton btnAcceder = new JButton("Acceder");
 		btnAcceder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//cf.control(); <--- imagen diseno.jpg
-				ControlFrame cf = new ControlFrame();
-				cf.setVisible(true);
-				//accederPerfil();
+				accederPerfil();
 			}
 		});
 		btnAcceder.setBounds(200, 179, 89, 23);
@@ -66,14 +72,14 @@ public class LoginFrame extends JFrame {
 		btnSalir.setBounds(51, 250, 89, 23);
 		getContentPane().add(btnSalir);
 		
-		JButton btnRegistrarse = new JButton("Registrarse");
+		JButton btnRegistrarse = new JButton("Registrar Usuario");
 		btnRegistrarse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RegistroFrame regFrm = new RegistroFrame();//Me abre la ventana RegistroFrame
 				regFrm.setVisible(true);
 			}
 		});
-		btnRegistrarse.setBounds(298, 250, 102, 23);
+		btnRegistrarse.setBounds(281, 250, 140, 23);
 		getContentPane().add(btnRegistrarse);
 		
 		JLabel lblnoSeEncuentra = new JLabel("\u00BFNo se encuentra registrado?");
@@ -81,7 +87,7 @@ public class LoginFrame extends JFrame {
 		getContentPane().add(lblnoSeEncuentra);
 	}
 	
-	public void accederPerfil(){
+	public void accederPerfil(){//Una vez verificados los datos se cargará el panel de control
 		//Esto falta completarlo pero se hará una vez ya hayamos completado las interfaces.
 		String usuario = tfUsuario.getText();
 		String pass = new String(pfContrasena.getPassword());
@@ -89,11 +95,30 @@ public class LoginFrame extends JFrame {
 		if ("".equals(usuario) || "".equals(pass)){
             JOptionPane.showMessageDialog(null, "Debe ingresar los campos solicitados");
         }
-		/*
-		ControlFrame ctrlFrm = new ControlFrame();
-		ctrlFrm.setVisible(true);
-		LoginFrame.this.dispose();
-		*/
+        else {
+            HashMap<String, Usuario> registros = new HashMap<>();
+            try {
+                registros = archvUsr.leerDatosUsr();
+            } catch (ClassNotFoundException ex) {
+            	JOptionPane.showMessageDialog(null, "¡Error!");
+            }
+            
+            Usuario logIn = registros.get(usuario);
+            if (logIn != null){
+            	
+            		JOptionPane.showMessageDialog(null, "¡Ha Iniciado Sesión!");
+            		String nm = logIn.getNombre();
+            		boolean alc1 = logIn.isPrtAlcoba1();
+            		boolean alc2 = logIn.isPrtAlcoba2();
+            		boolean pers = logIn.isPersiana();
+            		
+            		ControlFrame contfrm = new ControlFrame(nm, alc1, alc2, pers);
+            		contfrm.setVisible(true);
+            		contfrm.setLocationRelativeTo(null);
+            	
+            }else{
+                JOptionPane.showMessageDialog(null, "¡El Usuario no existe!");
+            }
+        } 
 	}
-
 }

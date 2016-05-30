@@ -7,7 +7,7 @@ public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String nombre;
 	private String nombreDeUsuario;
-	private transient String contrasena;
+	private String contrasena;
 	private String parentesco;
 	private boolean prtAlcoba1;
 	private boolean prtAlcoba2;
