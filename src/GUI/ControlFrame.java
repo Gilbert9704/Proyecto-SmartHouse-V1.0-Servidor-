@@ -346,7 +346,14 @@ public class ControlFrame extends JFrame{
 						lblPuertaPrincipal.setText(texto);	
 						ControlFrame.this.dispose();
 						puerta.puertaPrincipal(prtPrincipal);
+						
+						LoginFrame login = new LoginFrame();
+						login.setLocationRelativeTo(null);
+						login.setVisible(true);
 					}else if (opcion == JOptionPane.NO_OPTION){
+						texto = "- Puerta Principal : Cerrada";
+						lblPuertaPrincipal.setText(texto);
+					}else if (opcion == JOptionPane.CANCEL_OPTION){
 						texto = "- Puerta Principal : Cerrada";
 						lblPuertaPrincipal.setText(texto);
 					}

@@ -112,6 +112,7 @@ public class LoginFrame extends JFrame {
             		boolean alc2 = logIn.isPrtAlcoba2();
             		boolean pers = logIn.isPersiana();
             		
+            		LoginFrame.this.dispose();
             		ControlFrame contfrm = new ControlFrame(nm, alc1, alc2, pers);
             		contfrm.setVisible(true);
             		contfrm.setLocationRelativeTo(null);
