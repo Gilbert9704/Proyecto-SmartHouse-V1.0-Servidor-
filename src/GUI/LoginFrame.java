@@ -23,6 +23,11 @@ public class LoginFrame extends JFrame {
 	
 	//Constructor de la interfaz de Usuario del Login
 	public LoginFrame() {
+		inicializarComponentes();
+	}
+	
+	//Inicializa Cada Componente del Frame
+	public void inicializarComponentes(){
 		getContentPane().setLayout(null);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("res/casa.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -57,7 +62,7 @@ public class LoginFrame extends JFrame {
 		JButton btnAcceder = new JButton("Acceder");
 		btnAcceder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				accederPerfil();
+				accederCasa();
 			}
 		});
 		btnAcceder.setBounds(200, 179, 89, 23);
@@ -85,10 +90,10 @@ public class LoginFrame extends JFrame {
 		JLabel lblnoSeEncuentra = new JLabel("\u00BFNo se encuentra registrado?");
 		lblnoSeEncuentra.setBounds(271, 225, 169, 14);
 		getContentPane().add(lblnoSeEncuentra);
-	}
+	}//Fin Mï¿½todo inicializarComponentes();
 	
-	public void accederPerfil(){//Una vez verificados los datos se cargará el panel de control
-		//Esto falta completarlo pero se hará una vez ya hayamos completado las interfaces.
+	//Carga y verifica los datos del usuario, una vez verificados los datos se cargarï¿½ el panel de control
+	public void accederCasa(){//
 		String usuario = tfUsuario.getText();
 		String pass = new String(pfContrasena.getPassword());
 		
@@ -100,26 +105,26 @@ public class LoginFrame extends JFrame {
             try {
                 registros = archvUsr.leerDatosUsr();
             } catch (ClassNotFoundException ex) {
-            	JOptionPane.showMessageDialog(null, "¡Error!");
+            	JOptionPane.showMessageDialog(null, "ï¿½Error!");
             }
             
             Usuario logIn = registros.get(usuario);
             if (logIn != null){
             	
-            		JOptionPane.showMessageDialog(null, "¡Ha Iniciado Sesión!");
-            		String nm = logIn.getNombre();
-            		boolean alc1 = logIn.isPrtAlcoba1();
-            		boolean alc2 = logIn.isPrtAlcoba2();
-            		boolean pers = logIn.isPersiana();
+            	JOptionPane.showMessageDialog(null, "ï¿½Ha Iniciado Sesiï¿½n!");
+            	String nm = logIn.getNombre();
+           	boolean alc1 = logIn.isPrtAlcoba1();
+           	boolean alc2 = logIn.isPrtAlcoba2();
+           	boolean pers = logIn.isPersiana();
             		
-            		LoginFrame.this.dispose();
-            		ControlFrame contfrm = new ControlFrame(nm, alc1, alc2, pers);
-            		contfrm.setVisible(true);
-            		contfrm.setLocationRelativeTo(null);
+           		LoginFrame.this.dispose();
+           		ControlFrame contfrm = new ControlFrame(nm, alc1, alc2, pers);
+           		contfrm.setVisible(true);
+           		contfrm.setLocationRelativeTo(null);
             	
             }else{
-                JOptionPane.showMessageDialog(null, "¡El Usuario no existe!");
+                JOptionPane.showMessageDialog(null, "ï¿½El Usuario no existe!");
             }
         } 
-	}
+	}//Fin Metodo accederCasa
 }

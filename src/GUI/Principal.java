@@ -1,5 +1,7 @@
 package GUI;
 
+import Servidor.ServidorSmartHouse;
+
 public class Principal {
 
 	public static void main(String[] args) {
@@ -9,6 +11,9 @@ public class Principal {
 		logFr.setLocationRelativeTo(null);
 		logFr.setResizable(false);
 		logFr.setVisible(true);
+		
+		ServidorSmartHouse svdmh = new ServidorSmartHouse();
+		svdmh.servidor();
 		
 		/*
 		RegistroFrame regFr = new RegistroFrame();
