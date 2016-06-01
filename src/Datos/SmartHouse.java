@@ -20,11 +20,10 @@ public class SmartHouse {
 	//Estas variables me avisan el acceso sea concedido o denegado a los usuarios registrados
 	String accAlcoba1;
 	String accAlcoba2;
-	String accPersiana;
 	
 	public HashMap <String, Usuario> usuarios = new HashMap<>();
 	
-	Usuario regstUsr = new Usuario(name, userName, password, relationship, doorA, doorB, blind);
+	Usuario regstUsr = new Usuario(name, userName, password, relationship, doorA, doorB);
 	ArchivoUsr archUsr = new ArchivoUsr();
 	
 	public SmartHouse(HashMap <String, Usuario> u){
@@ -33,7 +32,7 @@ public class SmartHouse {
 	
 	public SmartHouse(){}
 	
-	public void registrarUsuario(boolean a, boolean b, boolean c) throws IOException{
+	public void registrarUsuario(boolean a, boolean b) throws IOException{
 		try{	
 			name = RegistroFrame.txfdNombre.getText();
 			regstUsr.setNombre(name);
@@ -47,8 +46,6 @@ public class SmartHouse {
 			regstUsr.setPrtAlcoba1(doorA);
 			doorB = b;
 			regstUsr.setPrtAlcoba2(doorB);
-			blind = c;
-			regstUsr.setPersiana(blind);
 			
 			if (doorA == true){
 				accAlcoba1 = "Concedido";
@@ -61,12 +58,6 @@ public class SmartHouse {
 			}else{
 				accAlcoba2 = "Denegado";
 			}
-			
-			if (blind == true){
-				accPersiana = "Condedido";
-			}else{
-				accPersiana = "Denegado";
-			}
 			//La idea de tener cada CheckBox como atributo es que antes de cargar la interfaz de control
 			//se verificarán las restricciones y los botones de esas funciones restringidas se bloquearán
 			if ("".equals(name) || "".equals(userName) || "".equals(password) || "".equals(relationship)){
@@ -78,7 +69,7 @@ public class SmartHouse {
                 if (usuarios.containsKey(userName)){
                     JOptionPane.showMessageDialog(null, "El nombre de usuario ya existe, ingrese uno distinto");
                 }else{
-                    usuarios.put(userName, new Usuario(name, userName, password, relationship, doorA, doorB, blind));
+                    usuarios.put(userName, new Usuario(name, userName, password, relationship, doorA, doorB));
                     JOptionPane.showMessageDialog(null, "¡¡Registro Exitoso!!");
                     JOptionPane.showMessageDialog(null, toString(),"Información", JOptionPane.PLAIN_MESSAGE);
                     archUsr.almacenarDatosUsr(usuarios);                
@@ -103,7 +94,7 @@ public class SmartHouse {
 	@Override
 	public String toString() {
 		return "DATOS DEL USUARIO" + "\nNombre: " + name  + "\nNombre de Usuario: " + userName + "\nParentesco: "+ relationship 
-				+ "\nAcceso a la Alcoba 1: " + accAlcoba1 + "\nAcceso a la Alcoba 2: " + accAlcoba2 + "\nAcceso a la Persiana: " + accPersiana;
+				+ "\nAcceso a la Alcoba 1: " + accAlcoba1 + "\nAcceso a la Alcoba 2: " + accAlcoba2;
 	}
 	
 	

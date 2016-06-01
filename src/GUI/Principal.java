@@ -14,6 +14,7 @@ public class Principal {
 		
 		ServidorSmartHouse svdmh = new ServidorSmartHouse();
 		svdmh.servidor();
+                
 		/*
 		RegistroFrame regFr = new RegistroFrame();
 		regFr.setTitle("SmartHouse v1.0");

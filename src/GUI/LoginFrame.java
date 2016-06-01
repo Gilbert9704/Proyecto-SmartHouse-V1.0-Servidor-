@@ -105,25 +105,24 @@ public class LoginFrame extends JFrame {
             try {
                 registros = archvUsr.leerDatosUsr();
             } catch (ClassNotFoundException ex) {
-            	JOptionPane.showMessageDialog(null, "ï¿½Error!");
+            	JOptionPane.showMessageDialog(null, "¡Error!");
             }
             
             Usuario logIn = registros.get(usuario);
             if (logIn != null){
             	
-            	JOptionPane.showMessageDialog(null, "ï¿½Ha Iniciado Sesiï¿½n!");
+            	JOptionPane.showMessageDialog(null, "¡Ha Iniciado Sesión!");
             	String nm = logIn.getNombre();
-           	boolean alc1 = logIn.isPrtAlcoba1();
-           	boolean alc2 = logIn.isPrtAlcoba2();
-           	boolean pers = logIn.isPersiana();
+            	boolean alc1 = logIn.isPrtAlcoba1();
+            	boolean alc2 = logIn.isPrtAlcoba2();
             		
-           	LoginFrame.this.dispose();
-           	ControlFrame contfrm = new ControlFrame(nm, alc1, alc2, pers);
-           	contfrm.setVisible(true);
-           	contfrm.setLocationRelativeTo(null);
+            	LoginFrame.this.dispose();
+            	ControlFrame contfrm = new ControlFrame(nm, alc1, alc2);
+            	contfrm.setVisible(true);
+            	contfrm.setLocationRelativeTo(null);
             	
             }else{
-                JOptionPane.showMessageDialog(null, "ï¿½El Usuario no existe!");
+                JOptionPane.showMessageDialog(null, "¡El Usuario no existe!");
             }
         } 
 	}//Fin Metodo accederCasa

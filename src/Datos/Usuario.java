@@ -11,16 +11,15 @@ public class Usuario implements Serializable {
 	private String parentesco;
 	private boolean prtAlcoba1;
 	private boolean prtAlcoba2;
-	private boolean persiana;
+
 	
-	public Usuario(String nombre, String nombreDeUsuario, String contrasena, String parentesco, boolean prtAlcoba1, boolean prtAlcoba2, boolean persiana) {
+	public Usuario(String nombre, String nombreDeUsuario, String contrasena, String parentesco, boolean prtAlcoba1, boolean prtAlcoba2) {
 		this.nombre = nombre;
 		this.nombreDeUsuario = nombreDeUsuario;
 		this.contrasena = contrasena;
 		this.parentesco = parentesco;
 		this.prtAlcoba1 = prtAlcoba1;
 		this.prtAlcoba2 = prtAlcoba2;
-		this.persiana = persiana;
 	}
 
 	public String getNombre() {
@@ -69,13 +68,5 @@ public class Usuario implements Serializable {
 
 	public void setPrtAlcoba2(boolean prtAlcoba2) {
 		this.prtAlcoba2 = prtAlcoba2;
-	}
-
-	public boolean isPersiana() {
-		return persiana;
-	}
-
-	public void setPersiana(boolean persiana) {
-		this.persiana = persiana;
 	}
 }

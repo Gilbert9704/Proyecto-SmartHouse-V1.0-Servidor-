@@ -25,7 +25,6 @@ public class ControlFrame extends JFrame{
 	private boolean prtAlcoba2 = false;
 	private boolean prtBano = false;
 	private boolean prtPrincipal = false;
-	private boolean persiana = false;
 	
 	//Luces
 	private boolean lzAlcoba1 = false;
@@ -48,7 +47,6 @@ public class ControlFrame extends JFrame{
 	JLabel lblPuertaAlcoba_1 = new JLabel("- Puerta Alcoba 1 : ");
 	JLabel lblPuertaAlcoba_2 = new JLabel("- Puerta Alcoba 2 : ");
 	JLabel lblPuertaBao = new JLabel("- Puerta Ba\u00F1o : ");
-	JLabel lblPersianaSalacomedor = new JLabel("- Persiana Sala-Comedor : ");
 	
 	//Botones Iluminación
 	JButton btnLuzAlcoba_1 = new JButton();
@@ -71,7 +69,7 @@ public class ControlFrame extends JFrame{
 	Puerta puerta = new Puerta();
 	Iluminacion iluminacion = new Iluminacion();
 	
-	public ControlFrame(String name, boolean alcoba1, boolean alcoba2, boolean persianap) {
+	public ControlFrame(String name, boolean alcoba1, boolean alcoba2) {
 		//En esta fraccion de codigo se evaluan los datos para posteriormente generar la interfaz de control
 		if (alcoba1 == false){
 			btnPAlcoba_1.setEnabled(false);
@@ -81,9 +79,6 @@ public class ControlFrame extends JFrame{
 			btnPAlcoba_2.setEnabled(false);
 			btnLuzAlcoba_2.setEnabled(false);
 		}
-		if (persianap == false){
-			btnPersiana.setEnabled(false);
-		}  
 		//<---------------------------------------------->
 		
 		this.getContentPane().setLayout(null);
@@ -251,27 +246,8 @@ public class ControlFrame extends JFrame{
 		//<--------------Fin Botones Iluminacion--------------->
 		
 		
-		//<--------------Botones Puertas y persiana--------------->
-		//Boton Persiana
-		btnPersiana.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (persiana == false){
-					persiana = true;
-					texto = "- Persiana Sala-Comedor : Abierta";
-					lblPersianaSalacomedor.setText(texto);
-					JOptionPane.showMessageDialog(null, "Persiana Abierta");
-				}else{
-					persiana = false;
-					texto = "- Persiana Sala-Comedor : Cerrada";
-					lblPersianaSalacomedor.setText(texto);
-					JOptionPane.showMessageDialog(null, "Persiana Cerrada");
-				}
-				puerta.persiana(persiana);
-			}
-		});
-		btnPersiana.setBounds(440, 368, 116, 29);
-		getContentPane().add(btnPersiana);
-		
+		//<--------------Botones Puertas--------------->
+
 		//Boton Puerta Baño
 		btnPBanio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -367,7 +343,7 @@ public class ControlFrame extends JFrame{
 		btnPPrincipal.setIcon(new ImageIcon("res/puerta.jpg"));
 		btnPPrincipal.setBounds(553, 250, 57, 83);
 		getContentPane().add(btnPPrincipal);
-		//<---------------Fin Botones Puertas y persiana---------------->
+		//<---------------Fin Botones Puertas---------------->
 		
 		//<----Labels Estados de las Iluminacion (Propiedades)---->
 		JLabel lblEstadoDeLa = new JLabel("Estado de la Iluminaci\u00F3n");
@@ -410,14 +386,6 @@ public class ControlFrame extends JFrame{
 		getContentPane().add(lblPuertaAlcoba_2);
 		
 		lblPuertaBao.setBounds(431, 503, 172, 14);
-		getContentPane().add(lblPuertaBao);
-		
-		//<----Label Estado de la persiana (Propiedades)---->
-		JLabel lblEstadoDeLa_1 = new JLabel("Estado de la Persiana\r\n");
-		lblEstadoDeLa_1.setBounds(457, 538, 133, 14);
-		getContentPane().add(lblEstadoDeLa_1);
-		
-		lblPersianaSalacomedor.setBounds(433, 557, 234, 14);
-		getContentPane().add(lblPersianaSalacomedor);
+		getContentPane().add(lblPuertaBao);	
 	}
 }

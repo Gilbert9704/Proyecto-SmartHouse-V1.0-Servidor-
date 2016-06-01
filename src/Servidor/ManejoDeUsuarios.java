@@ -1,5 +1,6 @@
 package Servidor;
 
+import Acciones.Puerta;
 import DAO.ArchivoUsr;
 import Datos.SmartHouse;
 import Datos.Usuario;
@@ -15,11 +16,14 @@ import java.util.logging.Logger;
 public class ManejoDeUsuarios implements Runnable{
 	
     private Socket socket;
-	
+    
+    Puerta puerta = new Puerta();
+    
     public ManejoDeUsuarios(Socket socket) {
         this.socket = socket;
     }
-
+    
+    
     @Override
     public void run() {	
 	try {
@@ -32,10 +36,6 @@ public class ManejoDeUsuarios implements Runnable{
             //el panel de control personalizado
             ObjectOutputStream alClienteUsr = new ObjectOutputStream(socket.getOutputStream());
             
-            //ALTERNATIVA #2 No se va a poder
-            //Crear un DataOutputStream para cada atributo que se necesita, Str nombre
-            //bool alcoba1, bool alcoba2, bool persiana
-            
             String permiso;
             //Se cargan los datos para conceder o denegar el acceso al cliente
             
@@ -45,13 +45,13 @@ public class ManejoDeUsuarios implements Runnable{
             HashMap<String, Usuario> registros = new HashMap<>();
 	
             archivo = new ArchivoUsr();
-		
+            
             try {
                 registros = archivo.leerDatosUsr();
             } catch (ClassNotFoundException ex) {}
                 smhs = new SmartHouse(registros);
             //<--------------------------------->
-            
+             
             // Continuously serve the client
             while (true) {
                 // Receive el usuario del cliente
@@ -70,16 +70,15 @@ public class ManejoDeUsuarios implements Runnable{
                     String contrs = logIn.getContrasena();
                     boolean alc1  = logIn.isPrtAlcoba1();
                     boolean alc2  = logIn.isPrtAlcoba2();
-                    boolean pers  = logIn.isPersiana();
                     
-                    Usuario usr = new Usuario(nombre, nmUsur, contrs, parent, alc1, alc2, pers);
+                    Usuario usr = new Usuario(nombre, nmUsur, contrs, parent, alc1, alc2);
                     permiso = "concedido";
                     alCliente.writeUTF(permiso);
                     alClienteUsr.writeObject(usr);
                 }else{
                     permiso = "denegado";
                     alCliente.writeUTF(permiso);
-                }
+                }           
             }    
         }catch (IOException ex) {
             Logger.getLogger(ManejoDeUsuarios.class.getName()).log(Level.SEVERE, null, ex);

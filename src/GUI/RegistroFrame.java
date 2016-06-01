@@ -24,12 +24,10 @@ public class RegistroFrame extends JFrame{
 	public static JTextField txfdParentesco;
 	public static JCheckBox chckbxAlcoba_1;
 	public static JCheckBox chckbxAlcoba_2;
-	public static JCheckBox chckbxPersiana;
 	
 	//===================================
 	public boolean estadoAlcoba1;
 	public boolean estadoAlcoba2;
-	public boolean estadoPersiana;
 
 	SmartHouse smhs;
 	ArchivoUsr archivo;
@@ -114,12 +112,8 @@ public class RegistroFrame extends JFrame{
 		getContentPane().add(chckbxAlcoba_1);
 		
 		JCheckBox chckbxAlcoba_2 = new JCheckBox("Puerta Alcoba 2");	
-		chckbxAlcoba_2.setBounds(215, 305, 121, 23);
+		chckbxAlcoba_2.setBounds(300, 305, 121, 23);
 		getContentPane().add(chckbxAlcoba_2);
-		
-		JCheckBox chckbxPersiana = new JCheckBox("Persiana");
-		chckbxPersiana.setBounds(364, 305, 97, 23);
-		getContentPane().add(chckbxPersiana);
 		
 		JButton btnRegresar = new JButton("Regresar");
 		btnRegresar.addActionListener(new ActionListener() {
@@ -144,14 +138,9 @@ public class RegistroFrame extends JFrame{
 				}else{
 					estadoAlcoba2 = false;
 				}
-				if (chckbxPersiana.isSelected() == true){
-					estadoPersiana = true;
-				}else{
-					estadoPersiana = false;
-				}
 				
 				try {
-					smhs.registrarUsuario(estadoAlcoba1, estadoAlcoba2, estadoPersiana);
+					smhs.registrarUsuario(estadoAlcoba1, estadoAlcoba2);
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}

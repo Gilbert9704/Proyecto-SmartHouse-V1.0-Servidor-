@@ -1,5 +1,6 @@
 package Servidor;
 
+//import Acciones.RecibirComandoCliente;
 import javax.swing.JFrame;
 import java.io.*;
 import java.net.*;
@@ -9,6 +10,7 @@ import javax.swing.*;
 
 public class ServidorSmartHouse extends JFrame{
 	
+	private static final long serialVersionUID = 1L;
 	private JTextArea texto = new JTextArea();
 
   	public void servidor() {
@@ -46,10 +48,18 @@ public class ServidorSmartHouse extends JFrame{
 
                     // Create a new thread for the connection
                     ManejoDeUsuarios tarea = new ManejoDeUsuarios(socket);
-
-                    // Start the new thread
+                    
+                    // Start the new thread 
                     new Thread(tarea).start();
-
+                    
+                    /*
+                    //Crea un nuevo Hilo para los comandos del cliente<-------->
+                    RecibirComandoCliente reccmcl = new RecibirComandoCliente(socket);                   
+                    //Inicia un nuevo hilo
+                    new Thread(reccmcl).start();
+                    //<----------->
+                    */
+                    
                     // Increment clientNo
                     usuarioNo++;
                 }
