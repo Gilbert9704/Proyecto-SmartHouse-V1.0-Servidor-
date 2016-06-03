@@ -14,7 +14,7 @@ public class RecibirComandoCliente{
     private final String host = "localhost";
     
     public RecibirComandoCliente(){
-        // Create a server socket
+        // Crea un nuevo ser
         ServerSocket serverSocket = null;
         try {
             serverSocket = new ServerSocket(8500);

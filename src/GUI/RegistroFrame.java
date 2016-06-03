@@ -28,7 +28,9 @@ public class RegistroFrame extends JFrame{
 	//===================================
 	public boolean estadoAlcoba1;
 	public boolean estadoAlcoba2;
-
+	
+	int auxlInt;
+	
 	SmartHouse smhs;
 	ArchivoUsr archivo;
 	
@@ -145,6 +147,10 @@ public class RegistroFrame extends JFrame{
 					e1.printStackTrace();
 				}
 				
+				auxlInt = smhs.paraCerrar();
+				if (auxlInt == 1){
+					RegistroFrame.this.dispose();
+				}
 			}
 		});
 		btnRegistrar.setBounds(336, 383, 89, 23);

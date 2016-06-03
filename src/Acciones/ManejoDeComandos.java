@@ -10,7 +10,7 @@ public class ManejoDeComandos implements Runnable {
     
     private Socket socket;
     
-    Puerta puerta = new Puerta();
+    Casa casita = new Casa();
     
     public ManejoDeComandos(Socket socket) {
         this.socket = socket;
@@ -38,16 +38,16 @@ public class ManejoDeComandos implements Runnable {
                 if (numeroPrt != 0){
                     switch(numeroPrt){
                         case 1:
-                            puerta.puertaAlcoba1(estadoPuerta);
+                            casita.puertaAlcoba1(estadoPuerta);
                             break;
                         case 2:
-                            puerta.puertaAlcoba2(estadoPuerta);
+                            casita.puertaAlcoba2(estadoPuerta);
                             break;
                         case 3:
-                            puerta.puertaBano(estadoPuerta);
+                            casita.puertaBano(estadoPuerta);
                             break;
                         case 4:
-                            puerta.puertaPrincipal(estadoPuerta);
+                            casita.puertaPrincipal(estadoPuerta);
                             break;
                     }
                 }

@@ -28,39 +28,32 @@ public class ServidorSmartHouse extends JFrame{
             setVisible(true); // It is necessary to show the frame here!
 
             try {
-                // Create a server socket
+                // Crea un server Socket
                 ServerSocket serverSocket = new ServerSocket(8000);
-                texto.append("ServidorSmartHouse iniciï¿½ " + new Date() + '\n');
+                texto.append("ServidorSmartHouse inició " + new Date() + '\n');
 
                 // Number a client
                 int usuarioNo = 1;
                 
                 while (true) {
-                    // Listen for a new connection request
+                    // Esperando una nueva conexión
+                	//Debemos cambiar este serverSocket, para colocarlo arriba 
                     Socket socket = serverSocket.accept();
 
-                    // Display the client number
+                    // Muestra en numero del cliente
                     texto.append("Iniciando nuevo hilo para el usuario " + usuarioNo + " a las " + new Date() + '\n');
 
-                    // Find the client's host name, and IP address
+                    // Encuentra y muestra la IP del usuario
                     InetAddress inetAddress = socket.getInetAddress();
-                    texto.append("Direccion IP del Usuario " + usuarioNo + inetAddress.getHostAddress() + "\n");
+                    texto.append("Direccion IP del Usuario " + usuarioNo + ": " + inetAddress.getHostAddress() + "\n");
 
-                    // Create a new thread for the connection
+                    // Crea un nuevo Hilo para la conexion
                     ManejoDeUsuarios tarea = new ManejoDeUsuarios(socket);
                     
-                    // Start the new thread 
+                    // Inicia un nuevo Hijo 
                     new Thread(tarea).start();
                     
-                    /*
-                    //Crea un nuevo Hilo para los comandos del cliente<-------->
-                    RecibirComandoCliente reccmcl = new RecibirComandoCliente(socket);                   
-                    //Inicia un nuevo hilo
-                    new Thread(reccmcl).start();
-                    //<----------->
-                    */
-                    
-                    // Increment clientNo
+                    // Incrementa en numero del cliente
                     usuarioNo++;
                 }
             }catch(IOException ex) {

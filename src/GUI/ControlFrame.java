@@ -5,8 +5,7 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-import Acciones.Iluminacion;
-import Acciones.Puerta;
+import Acciones.Casa;
 
 /**
  * Enlace del Repositorio https://github.com/Gilbert9704/Proyecto-SmartHouse
@@ -66,8 +65,7 @@ public class ControlFrame extends JFrame{
 	JLabel lblIluminacinCocina = new JLabel("- Iluminaci\u00F3n Cocina: ");
 	JLabel lblIluminacinSalacomedor = new JLabel("- Iluminaci\u00F3n Sala-Comedor: ");
 	
-	Puerta puerta = new Puerta();
-	Iluminacion iluminacion = new Iluminacion();
+	Casa casa = new Casa();
 	
 	public ControlFrame(String name, boolean alcoba1, boolean alcoba2) {
 		//En esta fraccion de codigo se evaluan los datos para posteriormente generar la interfaz de control
@@ -112,7 +110,7 @@ public class ControlFrame extends JFrame{
 					lblIluminacionAlcoba_1.setText(texto);
 					JOptionPane.showMessageDialog(null, "Iluminacion de la alcoba 1 Apagada");
 				}
-				iluminacion.luzAlcoba1(lzAlcoba1);
+				casa.luzAlcoba1(lzAlcoba1);
 			}
 		});
 		btnLuzAlcoba_1.setIcon(new ImageIcon("res/alcoba_1.jpg"));
@@ -133,7 +131,7 @@ public class ControlFrame extends JFrame{
 					lblIluminacinAlcoba_2.setText(texto);
 					JOptionPane.showMessageDialog(null, "Iluminacion de la alcoba 2 Apagada");
 				}
-				iluminacion.luzAlcoba2(lzAlcoba2);
+				casa.luzAlcoba2(lzAlcoba2);
 			}
 		});
 		btnLuzAlcoba_2.setIcon(new ImageIcon("res/alcoba_2.jpg"));
@@ -154,7 +152,7 @@ public class ControlFrame extends JFrame{
 					lblIluminacinLavandea.setText(texto);
 					JOptionPane.showMessageDialog(null, "Iluminacion de la Lavandería Apagada");
 				}
-				iluminacion.luzLavanderia(lzLavanderia);
+				casa.luzLavanderia(lzLavanderia);
 			}
 		});
 		btnLuzLavanderia.setIcon(new ImageIcon("res/lavanderia.jpg"));
@@ -175,7 +173,7 @@ public class ControlFrame extends JFrame{
 					lblIluminacinBao.setText(texto);
 					JOptionPane.showMessageDialog(null, "Iluminacion del Baño Apagada");
 				}	
-				iluminacion.luzBano(lzBano);
+				casa.luzBano(lzBano);
 			}
 		});
 		btnLuzBanio.setIcon(new ImageIcon("res/ba\u00F1o.jpg"));
@@ -196,7 +194,7 @@ public class ControlFrame extends JFrame{
 					lblIluminacinCocina.setText(texto);
 					JOptionPane.showMessageDialog(null, "Iluminacion de la Cocina Apagada");					
 				}
-				iluminacion.luzCocina(lzCocina);
+				casa.luzCocina(lzCocina);
 			}
 		});
 		btnLuzCocina.setIcon(new ImageIcon("res/cocina.jpg"));
@@ -217,7 +215,7 @@ public class ControlFrame extends JFrame{
 					lblIluminacinSalacomedor.setText(texto);
 					JOptionPane.showMessageDialog(null, "Iluminacion Sala-Comedor Apagada");					
 				}
-				iluminacion.luzSalaComedor(lzSalaComedor);
+				casa.luzSalaComedor(lzSalaComedor);
 			}
 		});
 		btnLuzSala.setIcon(new ImageIcon("res/salaComedor.jpg"));
@@ -238,6 +236,7 @@ public class ControlFrame extends JFrame{
 					lblIluminacinEntretenimiento.setText(texto);
 					JOptionPane.showMessageDialog(null, "Iluminacion Entretenimiento Apagada");					
 				}
+				casa.luzEntretenimiento(lzEntretenimiento);
 			}
 		});
 		btnLuzEntrt.setIcon(new ImageIcon("res/entretenimiento.jpg"));
@@ -262,7 +261,7 @@ public class ControlFrame extends JFrame{
 					lblPuertaBao.setText(texto);
 					JOptionPane.showMessageDialog(null, "Puerta del Baño Cerrada");
 				}
-				puerta.puertaBano(prtBano);
+				casa.puertaBano(prtBano);
 			}
 		});
 		btnPBanio.setBounds(330, 250, 111, 29);
@@ -282,7 +281,7 @@ public class ControlFrame extends JFrame{
 					lblPuertaAlcoba_2.setText(texto);
 					JOptionPane.showMessageDialog(null, "Puerta de la Alcoba 2 Cerrada");
 				}
-				puerta.puertaAlcoba2(prtAlcoba2);
+				casa.puertaAlcoba2(prtAlcoba2);
 			}
 		});
 		btnPAlcoba_2.setFont(new Font("Tahoma", Font.PLAIN, 10));
@@ -303,7 +302,7 @@ public class ControlFrame extends JFrame{
 					lblPuertaAlcoba_1.setText(texto);
 					JOptionPane.showMessageDialog(null, "Puerta de la Alcoba 1 Cerrada");
 				}
-				puerta.puertaAlcoba1(prtAlcoba1);
+				casa.puertaAlcoba1(prtAlcoba1);
 			}
 		});
 		btnPAlcoba_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
@@ -321,7 +320,7 @@ public class ControlFrame extends JFrame{
 						texto = "- Puerta Principal : Abierta";
 						lblPuertaPrincipal.setText(texto);	
 						ControlFrame.this.dispose();
-						puerta.puertaPrincipal(prtPrincipal);
+						casa.puertaPrincipal(prtPrincipal);
 						
 						LoginFrame login = new LoginFrame();
 						login.setLocationRelativeTo(null);

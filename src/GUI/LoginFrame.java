@@ -29,6 +29,7 @@ public class LoginFrame extends JFrame {
 	//Inicializa Cada Componente del Frame
 	public void inicializarComponentes(){
 		getContentPane().setLayout(null);
+		setTitle("SmartHouse v1.0 (Login)");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("res/casa.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 480, 340);
@@ -90,9 +91,9 @@ public class LoginFrame extends JFrame {
 		JLabel lblnoSeEncuentra = new JLabel("\u00BFNo se encuentra registrado?");
 		lblnoSeEncuentra.setBounds(271, 225, 169, 14);
 		getContentPane().add(lblnoSeEncuentra);
-	}//Fin Mï¿½todo inicializarComponentes();
+	}//Fin Método inicializarComponentes();
 	
-	//Carga y verifica los datos del usuario, una vez verificados los datos se cargarï¿½ el panel de control
+	//Carga y verifica los datos del usuario, una vez verificados los datos se cargará el panel de control
 	public void accederCasa(){//
 		String usuario = tfUsuario.getText();
 		String pass = new String(pfContrasena.getPassword());

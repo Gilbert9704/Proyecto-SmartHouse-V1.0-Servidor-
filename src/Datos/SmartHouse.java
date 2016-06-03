@@ -21,6 +21,8 @@ public class SmartHouse {
 	String accAlcoba1;
 	String accAlcoba2;
 	
+	int auxInt;
+	
 	public HashMap <String, Usuario> usuarios = new HashMap<>();
 	
 	Usuario regstUsr = new Usuario(name, userName, password, relationship, doorA, doorB);
@@ -72,7 +74,9 @@ public class SmartHouse {
                     usuarios.put(userName, new Usuario(name, userName, password, relationship, doorA, doorB));
                     JOptionPane.showMessageDialog(null, "¡¡Registro Exitoso!!");
                     JOptionPane.showMessageDialog(null, toString(),"Información", JOptionPane.PLAIN_MESSAGE);
-                    archUsr.almacenarDatosUsr(usuarios);                
+                    archUsr.almacenarDatosUsr(usuarios);
+                    auxInt = 1;
+                    paraCerrar();
                 }
                 
             }
@@ -97,5 +101,11 @@ public class SmartHouse {
 				+ "\nAcceso a la Alcoba 1: " + accAlcoba1 + "\nAcceso a la Alcoba 2: " + accAlcoba2;
 	}
 	
-	
+	public int paraCerrar(){
+		if (auxInt == 1){
+			return 1;
+		}else{
+			return 0;
+		}
+	}
 }
