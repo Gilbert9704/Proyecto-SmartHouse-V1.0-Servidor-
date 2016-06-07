@@ -2,7 +2,6 @@
 package Acciones;
 
 import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
@@ -21,7 +20,6 @@ public class ManejoDeComandos implements Runnable {
 	try {
             // Create data input and output streams
             DataInputStream delCliente = new DataInputStream(socket.getInputStream());
-            DataOutputStream alCliente = new DataOutputStream(socket.getOutputStream());
             
             int numeroPrt;
             boolean estadoPuerta;

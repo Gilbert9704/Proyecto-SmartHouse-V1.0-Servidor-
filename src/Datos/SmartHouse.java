@@ -76,7 +76,6 @@ public class SmartHouse {
                     JOptionPane.showMessageDialog(null, toString(),"Información", JOptionPane.PLAIN_MESSAGE);
                     archUsr.almacenarDatosUsr(usuarios);
                     auxInt = 1;
-                    paraCerrar();
                 }
                 
             }

@@ -18,51 +18,48 @@ public class ServidorSmartHouse extends JFrame{
   	}
 
   	public ServidorSmartHouse() {
-            // Place text area on the frame
-            setLayout(new BorderLayout());
-            add(new JScrollPane(texto), BorderLayout.CENTER);
+        // Coloca el textArea en el Frame
+  		setIconImage(Toolkit.getDefaultToolkit().getImage("src/res/casa.png"));
+        setLayout(new BorderLayout());
+        add(new JScrollPane(texto), BorderLayout.CENTER);
 
-            setTitle("ServidorSmartHouse (Verificador de Conexiones)");
-            setSize(500, 300);
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            setVisible(true); // It is necessary to show the frame here!
+        setTitle("ServidorSmartHouse (Verificador de Conexiones)");
+        setSize(500, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true); 
 
-            try {
-                // Crea un server Socket
-                ServerSocket serverSocket = new ServerSocket(8000);
-                texto.append("ServidorSmartHouse inició " + new Date() + '\n');
+        try {
+        	// Crea un server Socket
+        	@SuppressWarnings("resource")
+			ServerSocket serverSocket = new ServerSocket(8000);
+        	texto.append("ServidorSmartHouse inició " + new Date() + '\n');
 
-                // Number a client
-                int usuarioNo = 1;
+        	// Enumera un cliente
+        	int usuarioNo = 1;
                 
-                while (true) {
-                    // Esperando una nueva conexión
-                	//Debemos cambiar este serverSocket, para colocarlo arriba 
-                    Socket socket = serverSocket.accept();
+        	while (true) {
+        		// Esperando una nueva conexión
+              	Socket socket = serverSocket.accept();
 
-                    // Muestra en numero del cliente
-                    texto.append("Iniciando nuevo hilo para el usuario " + usuarioNo + " a las " + new Date() + '\n');
+                // Muestra en numero del cliente
+                texto.append("Iniciando nuevo hilo para el usuario " + usuarioNo + ". *Fecha y Hora: " + new Date() + '\n');
 
-                    // Encuentra y muestra la IP del usuario
-                    InetAddress inetAddress = socket.getInetAddress();
-                    texto.append("Direccion IP del Usuario " + usuarioNo + ": " + inetAddress.getHostAddress() + "\n");
+                // Encuentra y muestra la IP del usuario
+                InetAddress inetAddress = socket.getInetAddress();
+            
+                texto.append("Direccion IP del Usuario " + usuarioNo + ": " + inetAddress.getHostAddress() + "\n");
 
-                    // Crea un nuevo Hilo para la conexion
-                    ManejoDeUsuarios tarea = new ManejoDeUsuarios(socket);
+                // Crea un nuevo Hilo para la conexion
+                ManejoDeUsuarios tarea = new ManejoDeUsuarios(socket);
                     
-                    // Inicia un nuevo Hijo 
-                    new Thread(tarea).start();
+                // Inicia un nuevo Hijo 
+                new Thread(tarea).start();
                     
-                    // Incrementa en numero del cliente
-                    usuarioNo++;
-                }
-            }catch(IOException ex) {
-                System.err.println(ex);
-            }
+                // Incrementa en numero del cliente
+                usuarioNo++;
+        	}
+        }catch(IOException ex) {
+        	System.err.println(ex);
         }
-
-	 
-	
-	
-	
+  	}	
 }

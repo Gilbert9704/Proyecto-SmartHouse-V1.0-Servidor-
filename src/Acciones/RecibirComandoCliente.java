@@ -1,8 +1,7 @@
 
 package Acciones;
 
-import Servidor.ManejoDeUsuarios;
-import java.io.DataInputStream;
+//import java.io.DataInputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -11,9 +10,11 @@ import java.util.logging.Logger;
 
 public class RecibirComandoCliente{
     
-    private final String host = "localhost";
+    @SuppressWarnings("unused")
+	private final String host = "localhost";
     
-    public RecibirComandoCliente(){
+    @SuppressWarnings("resource")
+	public RecibirComandoCliente(){
         // Crea un nuevo ser
         ServerSocket serverSocket = null;
         try {
@@ -24,7 +25,7 @@ public class RecibirComandoCliente{
         }
 
         // Number a client
-        int usuarioNo = 1;
+        //int usuarioNo = 1;
                 
         while (true) {
         // Listen for a new connection request

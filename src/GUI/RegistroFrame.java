@@ -52,7 +52,7 @@ public class RegistroFrame extends JFrame{
 	public void inicializarComponentes(){
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("res/cuaderno.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("src/res/cuaderno.png"));
 		setTitle("SmartHouse v1.0 Registo");
 		setBounds(100, 100, 520, 470);
 		setResizable(false);

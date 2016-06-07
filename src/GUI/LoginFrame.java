@@ -21,8 +21,11 @@ public class LoginFrame extends JFrame {
 	SmartHouse smtHouse = new SmartHouse();
 	ArchivoUsr archvUsr = new ArchivoUsr();
 	
+	//Icon puertaPane;
+	
 	//Constructor de la interfaz de Usuario del Login
-	public LoginFrame() {
+	public LoginFrame(){
+		//puertaPane = new ImageIcon("res/puertaDialogo.png");
 		inicializarComponentes();
 	}
 	
@@ -30,7 +33,7 @@ public class LoginFrame extends JFrame {
 	public void inicializarComponentes(){
 		getContentPane().setLayout(null);
 		setTitle("SmartHouse v1.0 (Login)");
-		setIconImage(Toolkit.getDefaultToolkit().getImage("res/casa.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("src/res/casa.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 480, 340);
 		
@@ -99,7 +102,7 @@ public class LoginFrame extends JFrame {
 		String pass = new String(pfContrasena.getPassword());
 		
 		if ("".equals(usuario) || "".equals(pass)){
-            JOptionPane.showMessageDialog(null, "Debe ingresar los campos solicitados");
+            JOptionPane.showMessageDialog(null, "Debe ingresar los campos solicitados", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
         else {
             HashMap<String, Usuario> registros = new HashMap<>();
@@ -111,8 +114,8 @@ public class LoginFrame extends JFrame {
             
             Usuario logIn = registros.get(usuario);
             if (logIn != null){
-            	
-            	JOptionPane.showMessageDialog(null, "¡Ha Iniciado Sesión!");
+            	//Colocar el puertaPane cuando se solucione lo de la imagen
+            	JOptionPane.showMessageDialog(null, "¡Ha Iniciado Sesión!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
             	String nm = logIn.getNombre();
             	boolean alc1 = logIn.isPrtAlcoba1();
             	boolean alc2 = logIn.isPrtAlcoba2();
@@ -123,7 +126,7 @@ public class LoginFrame extends JFrame {
             	contfrm.setLocationRelativeTo(null);
             	
             }else{
-                JOptionPane.showMessageDialog(null, "¡El Usuario no existe!");
+                JOptionPane.showMessageDialog(null, "¡El Usuario no existe!", "Aviso", JOptionPane.ERROR_MESSAGE);
             }
         } 
 	}//Fin Metodo accederCasa
